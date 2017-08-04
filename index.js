@@ -2,11 +2,13 @@ var express    = require('express'),
     app        = express(),
     router     = express.Router(),
     mongoose   = require('mongoose'),
-    bodyParser = require ('body-parser')
+    bodyParser = require ('body-parser'),
+    config     = require ('config')
 
-mongoose.Promisse = global.Promisse
+mongoose.Promise = global.Promise
+
 //string de conexão com o banco de dados.
-mongoose.connect("mongodb://horario-app:s3d4hj@localhost/horario", {
+mongoose.connect(config.get('db_connection_url'), {
 	useMongoClient: true
 });
 
@@ -19,6 +21,8 @@ router.use(require("./app/routes/professor_routes"))
 router.use(require("./app/routes/turma_routes"))
 
 app.use('/api', router)
-app.listen(3000, function () {
-	console.log("Escutando na porta 3000!");
+var server = app.listen(3000, function () {
+	console.log("Escutando na porta 3000.")
 })
+
+module.exports = server

@@ -19,7 +19,7 @@ routes.post('/turmas',  function (req, res) {
   turma.save()
     .then(function (turma) {
       res.json({
-        sucess: true,
+        success: true,
         result: turma
       })
     }, function (err) {
@@ -63,7 +63,7 @@ routes.put('/turmas/:id', function (req, res) {
           serie: req.body.serie || trm.serie
         }})
           //obj = {  "ok": 1, "nModified": 1, "n": 1}
-          .then((obj) => { 
+          .then((obj) => {
             res.json({
               sucess: true,
               mensagem: "Turma modificada com sucesso."

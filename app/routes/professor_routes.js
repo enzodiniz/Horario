@@ -20,8 +20,10 @@ routes.post('/professores', (req, res) => {
   prof.save()
     .then((prof) => {
       res.json({
-        sucess: true,
-        mensagem: "Professor adicionado com sucesso.",
+        success: true,
+        // Antonio: retire a propriedade mensagem. success: true já indica que
+        // houve sucesso. Faça o mesmo em outros lugares
+        //mensagem: "Professor adicionado com sucesso.",
         result: prof
       })
     }, (err) => {
@@ -69,7 +71,7 @@ routes.put('/professores/:id', (req, res) => {
           alertas: req.body.alertas
         }})
           //obj = {  "ok": 1, "nModified": 1, "n": 1}
-          .then((obj) => { 
+          .then((obj) => {
             res.json({
               sucess: true,
               mensagem: "Professor modificado com sucesso."
